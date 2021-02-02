@@ -5,7 +5,7 @@ metadata:
     labels:
         app: nginx
 spec:
-    replicas: 3
+    replicas: 1
     selector:
         matchLabels:
             app: nginx
@@ -16,6 +16,11 @@ spec:
         spec:
             containers:
             - name: nginx
-              image: nginx:1.14.2
+              image: sukesan1984/nginx:0.4
               ports:
               - containerPort: 80
+            - name: php-fpm
+              image: sukesan1984/php-fpm-test:0.1
+              imagePullPolicy: Always
+              ports:
+              - containerPort: 9000
